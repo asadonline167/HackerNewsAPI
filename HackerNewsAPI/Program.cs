@@ -14,7 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular",
-        policy => policy.WithOrigins("http://localhost:4200")
+        policy =>
+        policy.WithOrigins("https://hackernewsclient-d0fya7hqe7gfg4g7.canadacentral-01.azurewebsites.net",
+                           "http://localhost:4200") // Angular URL
                         .AllowAnyHeader()
                         .AllowAnyMethod());
 });
@@ -31,7 +33,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-app.UseCors("AllowAngular");  // 👈 before MapControllers
+app.UseCors("AllowAngular");  
 
 app.MapControllers();
 

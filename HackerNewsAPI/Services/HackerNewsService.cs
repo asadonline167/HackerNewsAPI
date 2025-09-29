@@ -29,7 +29,6 @@ namespace HackerNewsAPI.Services
                 _cache.Set(idsCacheKey, storyIds, TimeSpan.FromMinutes(5));
             }
 
-            // 2. Figure out which IDs belong to this page
             var pagedIds = storyIds.Skip((page - 1) * pageSize).Take(pageSize);
 
             // 3. Build story list with per-story caching
